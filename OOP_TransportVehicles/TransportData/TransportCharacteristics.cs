@@ -69,23 +69,22 @@ namespace OOP_TransportVehicles.TransportData
 
         public static List<string> TransportData(List<TransportBase> transports)
         {
-            string transportItem;
             var transportsToStringArray = new List<string>();
             foreach (TransportBase transport in transports)
             {
                 if (transport.GetType().ToString().Contains("Automobile"))
                 {
-                    transportItem = AutoDetails((Automobile)transport);
+                    var transportItem = AutoDetails((Automobile)transport);
                     transportsToStringArray.Add(transportItem);
                 }
                 else if (transport.GetType().ToString().Contains("Motocycle"))
                 {
-                    transportItem = MotoDetails((Motocycle)transport);
+                    var transportItem = MotoDetails((Motocycle)transport);
                     transportsToStringArray.Add(transportItem);
                 }
                 else
                 {
-                    transportItem = BikeDetails((Bicycle)transport);
+                    var transportItem = BikeDetails((Bicycle)transport);
                     transportsToStringArray.Add(transportItem);
                 }
             }
