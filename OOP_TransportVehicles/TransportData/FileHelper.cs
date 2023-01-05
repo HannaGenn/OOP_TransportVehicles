@@ -7,7 +7,7 @@ namespace OOP_TransportVehicles.TransportData
 {
     public class FileHelper
     {
-        public void WriteTextInFile(List <TransportBase> transportObjects)
+        public void WriteTextInFile(List <string> transportObjects)
         {
             Console.WriteLine("Write path and name to download your file (ex.D:\\1.txt) and press Enter.");
             var enteredFolder = Console.ReadLine();
@@ -16,18 +16,9 @@ namespace OOP_TransportVehicles.TransportData
             {
                 using (FileStream file = new FileStream(filePosition, FileMode.Append))
                 using (StreamWriter stream = new StreamWriter(file))
-                    if (transport.GetType().ToString().Contains("Automobile"))
-                    {
-                        stream.Write(TransportCharacteristics.AutoDetails((Automobile)transport));
-                    }
-                    else if (transport.GetType().ToString().Contains("Motocycle"))
-                    {
-                        stream.Write(TransportCharacteristics.MotoDetails((Motocycle)transport));
-                    }
-                    else
-                    {
-                        stream.Write(TransportCharacteristics.BikeDetails((Bicycle)transport));
-                    }
+                {
+                    stream.Write(transport);
+                }
             }
         }
     }

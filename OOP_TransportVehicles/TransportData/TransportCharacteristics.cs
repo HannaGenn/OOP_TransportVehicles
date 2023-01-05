@@ -1,5 +1,6 @@
 ﻿using OOP_TransportVehicles.TransportClasses;
 using System;
+using System.Collections.Generic;
 
 namespace OOP_TransportVehicles.TransportData
 {
@@ -47,6 +48,7 @@ namespace OOP_TransportVehicles.TransportData
 
             return autoDetails;
         }
+
         public static string MotoDetails(Motocycle transport)
         {
             var basicDetails = TransportBasicDetails(transport);
@@ -63,6 +65,32 @@ namespace OOP_TransportVehicles.TransportData
             var bikeDetails = basicDetails + messageForDistinguishedDetail + transport.hasBell + "\n";
 
             return bikeDetails;
+        }
+
+        public static List<string> TransportData(List<TransportBase> transports)
+        {
+            string transportItem;
+            var transportsToStringArray = new List<string>();
+            foreach (TransportBase transport in transports)
+            {
+                if (transport.GetType().ToString().Contains("Automobile"))
+                {
+                    transportItem = AutoDetails((Automobile)transport);
+                    transportsToStringArray.Add(transportItem);
+                }
+                else if (transport.GetType().ToString().Contains("Motocycle"))
+                {
+                    transportItem = MotoDetails((Motocycle)transport);
+                    transportsToStringArray.Add(transportItem);
+                }
+                else
+                {
+                    transportItem = BikeDetails((Bicycle)transport);
+                    transportsToStringArray.Add(transportItem);
+                }
+            }
+
+            return transportsToStringArray;
         }
     }
 }

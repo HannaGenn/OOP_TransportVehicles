@@ -6,22 +6,11 @@ namespace OOP_TransportVehicles.TransportData
 {
     public class Print
     {
-        public static void TransportData(List<TransportBase> transports)
+        public static void TransportData(List<string> transports)
         {
-            foreach (TransportBase transport in transports)
+            foreach (string transport in transports)
             {
-                if (transport.GetType().ToString().Contains("Automobile"))
-                {
-                    Console.WriteLine(TransportCharacteristics.AutoDetails((Automobile)transport));
-                }
-                else if (transport.GetType().ToString().Contains("Motocycle"))
-                {
-                    Console.WriteLine(TransportCharacteristics.MotoDetails((Motocycle)transport));
-                }
-                else
-                {
-                    Console.WriteLine(TransportCharacteristics.BikeDetails((Bicycle)transport));
-                }
+                Console.WriteLine(transport);
             }
         }
 
