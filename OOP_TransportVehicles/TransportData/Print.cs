@@ -15,11 +15,13 @@ namespace OOP_TransportVehicles.TransportData
             }
         }
 
-        public List<TransportBase> TransportAccordingNameSearch(List<TransportBase> transportItems)
+        public void TransportAccordingNameSearch(List<TransportBase> transportItems)
         {
             Console.WriteLine("Enter name/part of name of the vehicle to display if it presents in the library.");
             var itemForSearch = Console.ReadLine();
-            return transportItems.FindAll(x => x.name.Contains(itemForSearch));
+            var transportAccordingFilter =  transportItems.FindAll(x => x.name.Contains(itemForSearch));
+            var transportArray = TransportCharacteristics.GetTransportData(transportAccordingFilter);
+            TransportData(transportArray);
         }
 
         public void TransportSearchByRegularExpressions(List <TransportBase> transportItems)

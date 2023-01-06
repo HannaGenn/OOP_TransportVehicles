@@ -35,9 +35,7 @@ namespace OOP_TransportVehicles
 
             Console.WriteLine("Press Enter to search item using FindAll");
             Console.ReadLine();
-            var transportBySearch = printItem.TransportAccordingNameSearch(allTransportItems);
-            var searchResultToDisplay = TransportCharacteristics.GetTransportData(transportBySearch);
-            Print.TransportData(searchResultToDisplay);
+            printItem.TransportAccordingNameSearch(allTransportItems);
 
             Console.WriteLine("Press Enter to add transport data in file.");
             Console.ReadLine();

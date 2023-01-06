@@ -92,23 +92,23 @@ namespace OOP_TransportVehicles.TransportData
             return transportsToStringArray;
         }
 
-        public static List<string> GetTransportData(TransportBase oneClass)
+        public static List<string> GetTransportData(TransportBase transport)
         {
             var transportsToStringArray = new List<string>();
 
-                if (oneClass.GetType().ToString().Contains("Automobile"))
+                if (transport.GetType().ToString().Contains("Automobile"))
                 {
-                    var transportItem = AutoDetails((Automobile)oneClass);
+                    var transportItem = AutoDetails((Automobile)transport);
                     transportsToStringArray.Add(transportItem);
                 }
-                else if (oneClass.GetType().ToString().Contains("Motocycle"))
+                else if (transport.GetType().ToString().Contains("Motocycle"))
                 {
-                    var transportItem = MotoDetails((Motocycle)oneClass);
+                    var transportItem = MotoDetails((Motocycle)transport);
                     transportsToStringArray.Add(transportItem);
                 }
                 else
                 {
-                    var transportItem = BikeDetails((Bicycle)oneClass);
+                    var transportItem = BikeDetails((Bicycle)transport);
                     transportsToStringArray.Add(transportItem);
                 }
 
