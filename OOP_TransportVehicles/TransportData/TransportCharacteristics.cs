@@ -67,7 +67,7 @@ namespace OOP_TransportVehicles.TransportData
             return bikeDetails;
         }
 
-        public static List<string> TransportData(List<TransportBase> transports)
+        public static List<string> GetTransportData(List<TransportBase> transports)
         {
             var transportsToStringArray = new List<string>();
             foreach (TransportBase transport in transports)
@@ -90,6 +90,29 @@ namespace OOP_TransportVehicles.TransportData
             }
 
             return transportsToStringArray;
+        }
+
+        public static List<string> GetTransportData(TransportBase oneClass)
+        {
+            var transportsToStringArray = new List<string>();
+
+                if (oneClass.GetType().ToString().Contains("Automobile"))
+                {
+                    var transportItem = AutoDetails((Automobile)oneClass);
+                    transportsToStringArray.Add(transportItem);
+                }
+                else if (oneClass.GetType().ToString().Contains("Motocycle"))
+                {
+                    var transportItem = MotoDetails((Motocycle)oneClass);
+                    transportsToStringArray.Add(transportItem);
+                }
+                else
+                {
+                    var transportItem = BikeDetails((Bicycle)oneClass);
+                    transportsToStringArray.Add(transportItem);
+                }
+
+           return transportsToStringArray;
         }
     }
 }

@@ -25,18 +25,25 @@ namespace OOP_TransportVehicles
             }
 
             allTransportItems.Sort(new SortTransportByName());
-            var transportObjectsToDisplay = TransportCharacteristics.TransportData(allTransportItems);
+            var transportObjectsToDisplay = TransportCharacteristics.GetTransportData(allTransportItems);
             Print.TransportData(transportObjectsToDisplay);
 
+            Console.WriteLine("Press Enter to search item using Regular expressions");
+            Console.ReadLine();
             var printItem = new Print();
-            var transportBySearch = printItem.TransportByEnteredCharacters(allTransportItems);
-            var searchResultToDisplay = TransportCharacteristics.TransportData(transportBySearch);
+            printItem.TransportSearchByRegularExpressions(allTransportItems);
+
+            Console.WriteLine("Press Enter to search item using FindAll");
+            Console.ReadLine();
+            var transportBySearch = printItem.TransportAccordingNameSearch(allTransportItems);
+            var searchResultToDisplay = TransportCharacteristics.GetTransportData(transportBySearch);
             Print.TransportData(searchResultToDisplay);
 
             Console.WriteLine("Press Enter to add transport data in file.");
             Console.ReadLine();
             var getFile = new FileHelper();
             getFile.WriteTextInFile(transportObjectsToDisplay);
+
         }
     }
 }
