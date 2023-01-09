@@ -9,38 +9,21 @@ namespace OOP_TransportVehicles
     {
         static void Main()
         {
-            var auto = new Automobile();
-            var moto = new Motocycle();
-            var bike = new Bicycle();
             var allTransportItems = new List<TransportBase>();
+            TransportCharacteristics.GetTransportDataAccordingUserChoice(allTransportItems);
 
-            for(int i = 1; i <= 1; i++)
-            {
-                TransportCharacteristics.GetNameForAuto(auto);
-                allTransportItems.Add(auto);
-                TransportCharacteristics.GetNameForBike(bike);
-                allTransportItems.Add(bike);
-                TransportCharacteristics.GetNameForMoto(moto);
-                allTransportItems.Add(moto);
-            }
-
-            allTransportItems.Sort(new SortTransportByName());
+            allTransportItems.Sort(0,allTransportItems.Count,new SortTransportByName());
             var transportObjectsToDisplay = TransportCharacteristics.GetTransportData(allTransportItems);
-            Print.TransportData(transportObjectsToDisplay);
+            ConsoleHelper.PrintDataOfTransport(transportObjectsToDisplay);
 
-            Console.WriteLine("Press Enter to search item using Regular expressions");
-            Console.ReadLine();
-            var printItem = new Print();
-            printItem.TransportSearchByRegularExpressions(allTransportItems);
+            ConsoleHelper.GetUserData("Press Enter to search item using Regular expressions.");
+            new ConsoleHelper().PrintTransportSearchedByRegularExpressions(allTransportItems);
 
-            Console.WriteLine("Press Enter to search item using FindAll");
-            Console.ReadLine();
-            printItem.TransportAccordingNameSearch(allTransportItems);
+            ConsoleHelper.GetUserData("Press Enter to search item using FindAll");
+            new ConsoleHelper().PrintTransportAccordingNameSearch(allTransportItems);
 
-            Console.WriteLine("Press Enter to add transport data in file.");
-            Console.ReadLine();
-            var getFile = new FileHelper();
-            getFile.WriteTextInFile(transportObjectsToDisplay);
+            ConsoleHelper.GetUserData("Press Enter to add transport data in file.");
+            new FileHelper().WriteTextInFile(transportObjectsToDisplay);
 
         }
     }

@@ -1,33 +1,31 @@
 ﻿using OOP_TransportVehicles.TransportClasses;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace OOP_TransportVehicles.TransportData
 {
     public class TransportCharacteristics
     {
-        public static string messageForDistinguishedDetail;
 
         public static Automobile GetNameForAuto(Automobile autoItem)
         {
-            Console.WriteLine("Enter automobile name: ");
-            autoItem.name = Console.ReadLine();
+            autoItem.name = ConsoleHelper.GetUserData("Enter automobile name: ");
 
             return autoItem;
         }
 
         public static Motocycle GetNameForMoto(Motocycle motoItem)
         {
-            Console.WriteLine("Enter motocycle name: ");
-            motoItem.name = Console.ReadLine();
+            motoItem.name = ConsoleHelper.GetUserData("Enter motocycle name: ");
 
             return motoItem;
         }
 
         public static Bicycle GetNameForBike(Bicycle bikeItem)
         {
-            Console.WriteLine("Enter bicycle name: ");
-            bikeItem.name = Console.ReadLine();
+
+            bikeItem.name = ConsoleHelper.GetUserData("Enter bicycle name: ");
 
             return bikeItem;
         }
@@ -43,8 +41,7 @@ namespace OOP_TransportVehicles.TransportData
         public static string AutoDetails(Automobile transport)
         {
             var basicDetails = TransportBasicDetails(transport);
-            messageForDistinguishedDetail = "\nAvailability of autogearbox: ";
-            var autoDetails = basicDetails + messageForDistinguishedDetail + transport.hasAutomaticGearBox + "\n";
+            var autoDetails = basicDetails + "\nAvailability of autogearbox: " + transport.hasAutomaticGearBox + "\n";
 
             return autoDetails;
         }
@@ -52,8 +49,7 @@ namespace OOP_TransportVehicles.TransportData
         public static string MotoDetails(Motocycle transport)
         {
             var basicDetails = TransportBasicDetails(transport);
-            messageForDistinguishedDetail = "\nAvailability of boot: ";
-            var motoDetails = basicDetails + messageForDistinguishedDetail + transport.hasMotorbikeBoot + "\n";
+            var motoDetails = basicDetails + "\nAvailability of boot: " + transport.hasMotorbikeBoot + "\n";
 
             return motoDetails;
         }
@@ -61,10 +57,33 @@ namespace OOP_TransportVehicles.TransportData
         public static string BikeDetails(Bicycle transport)
         {
             var basicDetails = TransportBasicDetails(transport);
-            messageForDistinguishedDetail = "\nAvailability of bell: ";
-            var bikeDetails = basicDetails + messageForDistinguishedDetail + transport.hasBell + "\n";
+            var bikeDetails = basicDetails + "\nAvailability of bell: " + transport.hasBell + "\n";
 
             return bikeDetails;
+        }
+
+        public static List<TransportBase> GetTransportDataAccordingUserChoice(List<TransportBase> transports)
+        {
+            var numberOfCars = int.Parse(ConsoleHelper.GetUserData("Enter quantity of automobiles to display: "));
+            var numberOfMotocycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of motocycles to display: "));
+            var numberOfBicycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of bicycles to display: "));
+
+            for (int i = 0; i < numberOfCars; i++)
+            {
+                transports.Add(GetNameForAuto(new Automobile()));
+            }
+
+            for (int i = 0; i < numberOfMotocycles; i++)
+            {
+                transports.Add(GetNameForMoto(new Motocycle()));
+            }
+
+            for (int i = 0; i < numberOfBicycles; i++)
+
+            {
+                transports.Add(GetNameForBike(new Bicycle()));
+            }
+            return transports;
         }
 
         public static List<string> GetTransportData(List<TransportBase> transports)
@@ -90,29 +109,7 @@ namespace OOP_TransportVehicles.TransportData
             }
 
             return transportsToStringArray;
-        }
 
-        public static List<string> GetTransportData(TransportBase transport)
-        {
-            var transportsToStringArray = new List<string>();
-
-                if (transport.GetType().ToString().Contains("Automobile"))
-                {
-                    var transportItem = AutoDetails((Automobile)transport);
-                    transportsToStringArray.Add(transportItem);
-                }
-                else if (transport.GetType().ToString().Contains("Motocycle"))
-                {
-                    var transportItem = MotoDetails((Motocycle)transport);
-                    transportsToStringArray.Add(transportItem);
-                }
-                else
-                {
-                    var transportItem = BikeDetails((Bicycle)transport);
-                    transportsToStringArray.Add(transportItem);
-                }
-
-           return transportsToStringArray;
         }
     }
 }
