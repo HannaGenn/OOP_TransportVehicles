@@ -109,7 +109,6 @@ namespace OOP_TransportVehicles.TransportData
             }
 
             return transportsToStringArray;
-
         }
     }
 }
