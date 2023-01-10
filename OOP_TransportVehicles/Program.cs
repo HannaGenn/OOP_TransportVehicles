@@ -1,6 +1,5 @@
 ﻿using OOP_TransportVehicles.TransportData;
 using OOP_TransportVehicles.TransportClasses;
-using System;
 using System.Collections.Generic;
 
 namespace OOP_TransportVehicles
@@ -24,7 +23,6 @@ namespace OOP_TransportVehicles
 
             ConsoleHelper.GetUserData("Press Enter to add transport data in file.");
             new FileHelper().WriteTextInFile(transportObjectsToDisplay);
-
         }
     }
 }

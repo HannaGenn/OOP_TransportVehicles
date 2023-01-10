@@ -1,13 +1,11 @@
 ﻿using OOP_TransportVehicles.TransportClasses;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 
 namespace OOP_TransportVehicles.TransportData
 {
     public class TransportCharacteristics
     {
-
         public static Automobile GetNameForAuto(Automobile autoItem)
         {
             autoItem.name = ConsoleHelper.GetUserData("Enter automobile name: ");
@@ -24,7 +22,6 @@ namespace OOP_TransportVehicles.TransportData
 
         public static Bicycle GetNameForBike(Bicycle bikeItem)
         {
-
             bikeItem.name = ConsoleHelper.GetUserData("Enter bicycle name: ");
 
             return bikeItem;
@@ -64,26 +61,36 @@ namespace OOP_TransportVehicles.TransportData
 
         public static List<TransportBase> GetTransportDataAccordingUserChoice(List<TransportBase> transports)
         {
-            var numberOfCars = int.Parse(ConsoleHelper.GetUserData("Enter quantity of automobiles to display: "));
-            var numberOfMotocycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of motocycles to display: "));
-            var numberOfBicycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of bicycles to display: "));
-
-            for (int i = 0; i < numberOfCars; i++)
+            try
             {
-                transports.Add(GetNameForAuto(new Automobile()));
-            }
+                var numberOfCars = int.Parse(ConsoleHelper.GetUserData("Enter quantity of automobiles to display: "));
+                var numberOfMotocycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of motocycles to display: "));
+                var numberOfBicycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of bicycles to display: "));
 
-            for (int i = 0; i < numberOfMotocycles; i++)
+                for (int i = 0; i < numberOfCars; i++)
+                {
+                    transports.Add(GetNameForAuto(new Automobile()));
+                }
+
+                for (int i = 0; i < numberOfMotocycles; i++)
+                {
+                    transports.Add(GetNameForMoto(new Motocycle()));
+                }
+
+                for (int i = 0; i < numberOfBicycles; i++)
+
+                {
+                    transports.Add(GetNameForBike(new Bicycle()));
+                }
+
+                return transports;
+            }
+            catch
             {
-                transports.Add(GetNameForMoto(new Motocycle()));
-            }
+                Console.WriteLine("Incorrect format.Enter number!" + "\n");
 
-            for (int i = 0; i < numberOfBicycles; i++)
-
-            {
-                transports.Add(GetNameForBike(new Bicycle()));
+                return GetTransportDataAccordingUserChoice(transports);
             }
-            return transports;
         }
 
         public static List<string> GetTransportData(List<TransportBase> transports)

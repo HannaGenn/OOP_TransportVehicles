@@ -19,6 +19,7 @@ namespace OOP_TransportVehicles.TransportData
         {
             Console.WriteLine(message);
             var inputItem = Console.ReadLine();
+
             return inputItem;
         }
 

@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TransportData\PrintHelper.cs" />
+    <Compile Include="TransportData\ConsoleHelper.cs" />
+    <Compile Include="TransportData\GetDirectory.cs" />
     <Compile Include="TransportData\SortTransportByName.cs" />
     <Compile Include="TransportData\TransportCharacteristics.cs" />
     <Compile Include="Program.cs" />
