@@ -9,11 +9,19 @@ namespace OOP_TransportVehicles.TransportData
         public void WriteTextInFile(List <string> transportObjects)
         {
             var fileName = "transports.txt";
-            var filePath = Path.Combine(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\..\"), fileName);
+            var filePath = Path.Combine(Environment.CurrentDirectory + @"\..\..\", fileName);
             using (StreamWriter stream = new StreamWriter(filePath, false))
                 foreach (var transport in transportObjects)
                 {
-                    stream.Write(transport);
+                    try
+                    {
+                        stream.Write(transport);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                 }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using OOP_TransportVehicles.TransportData;
 using OOP_TransportVehicles.TransportClasses;
 using System.Collections.Generic;
+using System;
 
 namespace OOP_TransportVehicles
 {
@@ -15,13 +16,11 @@ namespace OOP_TransportVehicles
             var transportObjectsToDisplay = TransportCharacteristics.GetTransportData(allTransportItems);
             ConsoleHelper.PrintDataOfTransport(transportObjectsToDisplay);
 
-            ConsoleHelper.GetUserData("Press Enter to search item using Regular expressions.");
             new ConsoleHelper().PrintTransportSearchedByRegularExpressions(allTransportItems);
 
-            ConsoleHelper.GetUserData("Press Enter to search item using FindAll");
             new ConsoleHelper().PrintTransportAccordingNameSearch(allTransportItems);
 
-            ConsoleHelper.GetUserData("Press Enter to add transport data in file.");
+            ConsoleHelper.GetUserDataString("Press Enter to add transport data in file.");
             new FileHelper().WriteTextInFile(transportObjectsToDisplay);
         }
     }

@@ -1,5 +1,4 @@
 ﻿using OOP_TransportVehicles.TransportClasses;
-using System;
 using System.Collections.Generic;
 
 namespace OOP_TransportVehicles.TransportData
@@ -8,21 +7,21 @@ namespace OOP_TransportVehicles.TransportData
     {
         public static Automobile GetNameForAuto(Automobile autoItem)
         {
-            autoItem.name = ConsoleHelper.GetUserData("Enter automobile name: ");
+            autoItem.name = ConsoleHelper.GetUserDataString("Enter automobile name: ");
 
             return autoItem;
         }
 
         public static Motocycle GetNameForMoto(Motocycle motoItem)
         {
-            motoItem.name = ConsoleHelper.GetUserData("Enter motocycle name: ");
+            motoItem.name = ConsoleHelper.GetUserDataString("Enter motocycle name: ");
 
             return motoItem;
         }
 
         public static Bicycle GetNameForBike(Bicycle bikeItem)
         {
-            bikeItem.name = ConsoleHelper.GetUserData("Enter bicycle name: ");
+            bikeItem.name = ConsoleHelper.GetUserDataString("Enter bicycle name: ");
 
             return bikeItem;
         }
@@ -61,36 +60,23 @@ namespace OOP_TransportVehicles.TransportData
 
         public static List<TransportBase> GetTransportDataAccordingUserChoice(List<TransportBase> transports)
         {
-            try
+            var numberOfCars = ConsoleHelper.GetUserDataInt("Enter quantity of automobiles to display: ");
+            var numberOfMotocycles = ConsoleHelper.GetUserDataInt("Enter quantity of motocycles to display: ");
+            var numberOfBicycles = ConsoleHelper.GetUserDataInt("Enter quantity of bicycles to display: ");
+            for (int i = 0; i < numberOfCars; i++)
             {
-                var numberOfCars = int.Parse(ConsoleHelper.GetUserData("Enter quantity of automobiles to display: "));
-                var numberOfMotocycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of motocycles to display: "));
-                var numberOfBicycles = int.Parse(ConsoleHelper.GetUserData("Enter quantity of bicycles to display: "));
-
-                for (int i = 0; i < numberOfCars; i++)
-                {
-                    transports.Add(GetNameForAuto(new Automobile()));
-                }
-
-                for (int i = 0; i < numberOfMotocycles; i++)
-                {
-                    transports.Add(GetNameForMoto(new Motocycle()));
-                }
-
-                for (int i = 0; i < numberOfBicycles; i++)
-
-                {
-                    transports.Add(GetNameForBike(new Bicycle()));
-                }
+                transports.Add(GetNameForAuto(new Automobile()));
+            }
+            for (int i = 0; i < numberOfMotocycles; i++)
+            {
+                transports.Add(GetNameForMoto(new Motocycle()));
+            }
+            for (int i = 0; i < numberOfBicycles; i++)
+            {
+                transports.Add(GetNameForBike(new Bicycle()));
+            }
 
                 return transports;
-            }
-            catch
-            {
-                Console.WriteLine("Incorrect format.Enter number!" + "\n");
-
-                return GetTransportDataAccordingUserChoice(transports);
-            }
         }
 
         public static List<string> GetTransportData(List<TransportBase> transports)

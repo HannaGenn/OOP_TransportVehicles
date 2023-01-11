@@ -1,0 +1,42 @@
+
+Name: Bear
+Average speed: 40
+Max speed: 130
+Quantity of wheels: 2
+Type of transport:Bicycle
+Availability of bell: no
+
+Name: Harley
+Average speed: 90
+Max speed: 130
+Quantity of wheels: 2
+Type of transport:Motobike
+Availability of boot: yes
+
+Name: Mers
+Average speed: 120
+Max speed: 130
+Quantity of wheels: 4
+Type of transport:Automobile
+Availability of autogearbox: yes
+
+Name: Nike
+Average speed: 90
+Max speed: 130
+Quantity of wheels: 2
+Type of transport:Motobike
+Availability of boot: yes
+
+Name: Pezho
+Average speed: 120
+Max speed: 130
+Quantity of wheels: 4
+Type of transport:Automobile
+Availability of autogearbox: yes
+
+Name: Tesla
+Average speed: 90
+Max speed: 130
+Quantity of wheels: 2
+Type of transport:Motobike
+Availability of boot: yes

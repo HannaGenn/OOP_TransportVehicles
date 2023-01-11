@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OOP_TransportVehicles.TransportClasses
+﻿namespace OOP_TransportVehicles.TransportClasses
 {
     public class Automobile: TransportBase
     {
