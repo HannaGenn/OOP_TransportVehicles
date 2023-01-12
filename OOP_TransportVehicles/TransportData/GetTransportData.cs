@@ -1,4 +1,5 @@
 ﻿using OOP_TransportVehicles.TransportClasses;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace OOP_TransportVehicles.TransportData
@@ -31,20 +32,21 @@ namespace OOP_TransportVehicles.TransportData
             var transportsToDisplay = new List<string>();
             foreach (TransportBase transport in transports)
             {
-                if (transport.type.Equals("Automobile"))
+                var type = transport.type;
+                switch (type)
                 {
-                    var transportItem = Automobile.AutoDetails((Automobile)transport);
-                    transportsToDisplay.Add(transportItem);
-                }
-                else if (transport.type.Equals("Motobike"))
-                {
-                    var transportItem = Motocycle.MotoDetails((Motocycle)transport);
-                    transportsToDisplay.Add(transportItem);
-                }
-                else if (transport.type.Equals("Bicycle"))
-                {
-                    var transportItem = Bicycle.BikeDetails((Bicycle)transport);
-                    transportsToDisplay.Add(transportItem);
+                    case "Automobile":
+                        var transportItem = Automobile.AutoDetails((Automobile)transport);
+                        transportsToDisplay.Add(transportItem);
+                        break;
+                    case "Motobike":
+                        var transportItemd = Motocycle.MotoDetails((Motocycle)transport);
+                        transportsToDisplay.Add(transportItemd);
+                        break;
+                    case "Bicycle":
+                        var transportItemg = Bicycle.BikeDetails((Bicycle)transport);
+                        transportsToDisplay.Add(transportItemg);
+                        break;
                 }
             }
 
