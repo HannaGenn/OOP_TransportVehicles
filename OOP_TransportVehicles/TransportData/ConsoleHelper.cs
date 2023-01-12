@@ -22,6 +22,7 @@ namespace OOP_TransportVehicles.TransportData
             var inputItem = Console.ReadLine();
 
             if (inputItem.All(char.IsLetter))
+
                 return inputItem;
             Console.WriteLine("Please enter text characters!\n");
 
@@ -35,6 +36,7 @@ namespace OOP_TransportVehicles.TransportData
 
             bool isNumeric = int.TryParse(inputItem.ToString(), out int number);
             if (isNumeric)
+
                 return number;
             Console.WriteLine("Please enter number!\n");
 
