@@ -10,7 +10,7 @@ namespace OOP_TransportVehicles.TransportData
     {
         public static void PrintDataOfTransport(List<string> transports)
         {
-            foreach (string transport in transports)
+            foreach (var transport in transports)
             {
                 Console.WriteLine(transport);
             }
@@ -23,8 +23,7 @@ namespace OOP_TransportVehicles.TransportData
 
             if (inputItem.All(char.IsLetter))
                 return inputItem;
-            else
-                Console.WriteLine("Please enter text characters!\n");
+            Console.WriteLine("Please enter text characters!\n");
 
             return GetUserDataString(message);
         }
@@ -37,8 +36,7 @@ namespace OOP_TransportVehicles.TransportData
             bool isNumeric = int.TryParse(inputItem.ToString(), out int number);
             if (isNumeric)
                 return number;
-            else
-                Console.WriteLine("Please enter number!\n");
+            Console.WriteLine("Please enter number!\n");
 
             return GetUserDataInt(message);
         }
@@ -47,8 +45,8 @@ namespace OOP_TransportVehicles.TransportData
         {
             var itemForSearch = GetUserDataString("Search item using FindAll.\nEnter name/part of name of the vehicle to display if it presents in the library.");
             var transportAccordingFilter =  transportItems.FindAll(x => x.name.ToLower().Contains(itemForSearch.ToLower()));
-            var transportArray = TransportCharacteristics.GetTransportData(transportAccordingFilter);
-            PrintDataOfTransport(transportArray);
+            var itemsToPrint = GetTransportData.GetTransportItemsData(transportAccordingFilter);
+            PrintDataOfTransport(itemsToPrint);
         }
 
         public void PrintTransportSearchedByRegularExpressions(List <TransportBase> transportItems)
@@ -60,8 +58,8 @@ namespace OOP_TransportVehicles.TransportData
                 Match match = regexCase.Match(transportItems[i].name);
                 if (match.Success)
                 {
-                    var foundItem = TransportCharacteristics.GetTransportData(new List<TransportBase> { transportItems[i] });
-                    PrintDataOfTransport(foundItem);
+                    var itemToPrint = GetTransportData.GetTransportItemsData(new List<TransportBase> { transportItems[i] });
+                    PrintDataOfTransport(itemToPrint);
                 }
             }
         }

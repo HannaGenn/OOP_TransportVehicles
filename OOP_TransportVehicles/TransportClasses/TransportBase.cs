@@ -12,5 +12,13 @@
         {
             maxSpeed = 130;
         }
+
+        public static string TransportBasicDetails(TransportBase transport)
+        {
+            var basicDetails = $"\nName: " + transport.name + "\nAverage speed: " + transport.averageSpeed + "\nMax speed: " +
+            transport.maxSpeed+ "\nQuantity of wheels: " + transport.wheels+ "\nType of transport:" + transport.type;
+
+            return basicDetails;
+        }
     }
 }
