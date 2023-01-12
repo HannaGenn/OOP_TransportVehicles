@@ -21,7 +21,6 @@ namespace OOP_TransportVehicles.TransportData
                     {
                         Console.WriteLine(ex.Message);
                     }
-
                 }
         }
     }
